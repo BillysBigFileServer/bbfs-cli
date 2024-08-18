@@ -42,7 +42,7 @@ func runDownload(cmd *cobra.Command, args []string) {
 		panic(err)
 	}
 
-	fileMeta, err := getFileMetadata(bfspClient, args[0], masterKey)
+	fileMeta, token, err := getFileMetadata(bfspClient, args[0], masterKey)
 	if err != nil {
 		panic(err)
 	}
@@ -90,7 +90,11 @@ func runDownload(cmd *cobra.Command, args []string) {
 	for _, indice := range chunkIndices {
 		indice := indice
 		chunkId := fileMeta.Chunks[indice]
-		chunk, err := bfsp.DownloadChunk(bfspClient, chunkId, fileMeta.Id, masterKey)
+		chunk, err := bfsp.DownloadChunk(bfspClient, bfsp.DownloadChunkArgs{
+			ChunkID: chunkId,
+			FileID:  fileMeta.Id,
+			Token:   token,
+		}, masterKey)
 		if err != nil {
 			panic(err)
 		}
@@ -119,7 +123,7 @@ func runDownload(cmd *cobra.Command, args []string) {
 	return
 }
 
-func getFileMetadata(bfspClient bfsp.FileServerClient, file string, masterKey bfsp.MasterKey) (*bfsp.FileMetadata, error) {
+func getFileMetadata(bfspClient bfsp.FileServerClient, file string, masterKey bfsp.MasterKey) (*bfsp.FileMetadata, string, error) {
 	switch strings.HasPrefix(file, "https://") {
 	case true:
 		return fileMetadataFromURL(bfspClient, file, masterKey)
@@ -128,30 +132,30 @@ func getFileMetadata(bfspClient bfsp.FileServerClient, file string, masterKey bf
 	}
 }
 
-func fileMetadataFromURL(bfspClient bfsp.FileServerClient, fileURL string, masterKey bfsp.MasterKey) (*bfsp.FileMetadata, error) {
+func fileMetadataFromURL(bfspClient bfsp.FileServerClient, fileURL string, masterKey bfsp.MasterKey) (*bfsp.FileMetadata, string, error) {
 	parts := strings.Split(fileURL, "https://bbfs.io/files/view_file#z:")
 	if len(parts) != 2 {
-		return nil, fmt.Errorf("invalid url")
+		return nil, "", fmt.Errorf("invalid url")
 	}
 
 	viewFileInfoB64 := parts[1]
 	viewFileInfo, err := bfsp.DecodeViewFileInfoB64(viewFileInfoB64)
 	if err != nil {
-		return nil, err
+		return nil, "", err
 	}
 
 	fileMeta, err := bfsp.DownloadFileMetadata(bfspClient, viewFileInfo.Id, masterKey)
 	if err != nil {
-		return nil, err
+		return nil, "", err
 	}
 
-	return fileMeta, nil
+	return fileMeta, viewFileInfo.Token, nil
 }
 
-func fileMetadataFromName(bfspClient bfsp.FileServerClient, fileName string, masterKey bfsp.MasterKey) (*bfsp.FileMetadata, error) {
+func fileMetadataFromName(bfspClient bfsp.FileServerClient, fileName string, masterKey bfsp.MasterKey) (*bfsp.FileMetadata, string, error) {
 	files, err := bfsp.ListFileMetadata(bfspClient, []string{}, masterKey)
 	if err != nil {
-		return nil, err
+		return nil, "", err
 	}
 
 	var fileMeta *bfsp.FileMetadata
@@ -162,6 +166,6 @@ func fileMetadataFromName(bfspClient bfsp.FileServerClient, fileName string, mas
 		}
 	}
 
-	return fileMeta, nil
+	return fileMeta, "", nil
 
 }

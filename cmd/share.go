@@ -46,6 +46,9 @@ func runShare(cmd *cobra.Command, args []string) {
 			break
 		}
 	}
+	if fileMeta == nil {
+		panic(fmt.Errorf("no file found"))
+	}
 
 	shareURL, err := client.ShareFile(fileMeta)
 	if err != nil {
