@@ -89,29 +89,22 @@ func runDownload(cmd *cobra.Command, args []string) {
 	g.SetLimit(100)
 	for _, indice := range chunkIndices {
 		indice := indice
-		err := func() error {
-			chunkId := fileMeta.Chunks[indice]
-			chunk, err := bfsp.DownloadChunk(bfspClient, chunkId, fileMeta.Id, masterKey)
-			if err != nil {
-				return err
-			}
-
-			_, err = file.WriteAt(chunk, int64(indice)*1024*1024)
-			if err != nil {
-				return err
-			}
-
-			totalUploaded := totalUploaded.Add(uint64(len(chunk)))
-			percentUploaded := float64(totalUploaded) / float64(fileMeta.FileSize) * 100
-			if showProgress {
-				fmt.Fprintf(os.Stderr, "\r\033[K%f%s downloaded", percentUploaded, "%")
-				os.Stderr.Sync()
-			}
-
-			return nil
-		}()
+		chunkId := fileMeta.Chunks[indice]
+		chunk, err := bfsp.DownloadChunk(bfspClient, chunkId, fileMeta.Id, masterKey)
 		if err != nil {
 			panic(err)
+		}
+
+		_, err = file.WriteAt(chunk, int64(indice)*1024*1024)
+		if err != nil {
+			panic(err)
+		}
+
+		totalUploaded := totalUploaded.Add(uint64(len(chunk)))
+		percentUploaded := float64(totalUploaded) / float64(fileMeta.FileSize) * 100
+		if showProgress {
+			fmt.Fprintf(os.Stderr, "\r\033[K%f%s downloaded", percentUploaded, "%")
+			os.Stderr.Sync()
 		}
 	}
 	fmt.Fprintln(os.Stderr)

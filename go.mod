@@ -3,7 +3,7 @@ module github.com/BillysBigFileServer/cli
 go 1.22.5
 
 require (
-	github.com/BillysBigFileServer/bfsp-go v0.0.0-20240817185506-427c2dc68809
+	github.com/BillysBigFileServer/bfsp-go v0.0.0-20240818055423-54c2bdc03ef3
 	github.com/adrg/xdg v0.5.0
 	github.com/cenkalti/backoff/v4 v4.3.0
 	github.com/google/uuid v1.6.0
