@@ -3,8 +3,8 @@ package client
 import (
 	"encoding/base64"
 
+	"github.com/BillysBigFileServer/bbfs-cli/config"
 	"github.com/BillysBigFileServer/bfsp-go"
-	"github.com/BillysBigFileServer/cli/config"
 )
 
 func NewFileServerClient() (bfsp.FileServerClient, error) {

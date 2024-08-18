@@ -1,4 +1,4 @@
-module github.com/BillysBigFileServer/cli
+module github.com/BillysBigFileServer/bbfs-cli
 
 go 1.22.5
 

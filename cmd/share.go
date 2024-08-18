@@ -2,8 +2,8 @@ package cmd
 
 import (
 	"fmt"
+	"github.com/BillysBigFileServer/bbfs-cli/client"
 	"github.com/BillysBigFileServer/bfsp-go"
-	"github.com/BillysBigFileServer/cli/client"
 	"github.com/spf13/cobra"
 )
 

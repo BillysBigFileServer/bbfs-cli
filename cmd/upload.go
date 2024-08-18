@@ -10,8 +10,8 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/BillysBigFileServer/bbfs-cli/client"
 	"github.com/BillysBigFileServer/bfsp-go"
-	"github.com/BillysBigFileServer/cli/client"
 	"github.com/cenkalti/backoff/v4"
 	"github.com/google/uuid"
 	"github.com/spf13/cobra"
