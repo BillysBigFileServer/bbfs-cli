@@ -2,10 +2,38 @@ package client
 
 import (
 	"encoding/base64"
+	"os"
 
 	"github.com/BillysBigFileServer/bbfs-cli/config"
 	"github.com/BillysBigFileServer/bfsp-go"
 )
+
+func FileServerBaseURL() string {
+	if baseURL := os.Getenv("FILE_SERVER_BASE_URL"); baseURL != "" {
+		return baseURL
+	} else {
+		return "big-file-server.fly.dev:9998"
+	}
+}
+
+func FileServerHTTPS() bool {
+	switch os.Getenv("FILE_SERVER_HTTPS") {
+	case "true", "1":
+		return true
+	case "false", "0":
+		return false
+	default:
+		return true
+	}
+}
+
+func BigCentralBaseURL() string {
+	if baseURL := os.Getenv("BIG_CENTRAL_BASE_URL"); baseURL != "" {
+		return baseURL
+	} else {
+		return "https://bbfs.io"
+	}
+}
 
 func NewFileServerClient() (bfsp.FileServerClient, error) {
 	configFile, err := config.OpenDefaultConfigFile()
@@ -17,8 +45,7 @@ func NewFileServerClient() (bfsp.FileServerClient, error) {
 		return nil, err
 	}
 
-	//bfspClient, err := bfsp.NewHTTPFileServerClient(bfspConfig.Token, "localhost:9998", false)
-	bfspClient, err := bfsp.NewHTTPFileServerClient(bfspConfig.Token, "big-file-server.fly.dev:9998", true)
+	bfspClient, err := bfsp.NewHTTPFileServerClient(bfspConfig.Token, FileServerBaseURL(), FileServerHTTPS())
 	if err != nil {
 		return nil, err
 	}
@@ -69,5 +96,5 @@ func ShareFile(fileMeta *bfsp.FileMetadata) (string, error) {
 		return "", err
 	}
 
-	return "https://bbfs.io/files/view_file#z:" + viewInfoB64, nil
+	return BigCentralBaseURL() + "/files/view_file#z:" + viewInfoB64, nil
 }

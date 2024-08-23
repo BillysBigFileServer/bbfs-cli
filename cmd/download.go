@@ -115,6 +115,10 @@ func runDownload(cmd *cobra.Command, args []string) {
 	if err := g.Wait(); err != nil {
 		panic(err)
 	}
+	if err := file.Close(); err != nil {
+		panic(err)
+
+	}
 	err = os.Rename(fullPath+".part", fullPath)
 	if err != nil {
 		panic(err)
@@ -133,7 +137,7 @@ func getFileMetadata(bfspClient bfsp.FileServerClient, file string, masterKey bf
 }
 
 func fileMetadataFromURL(bfspClient bfsp.FileServerClient, fileURL string, masterKey bfsp.MasterKey) (*bfsp.FileMetadata, string, error) {
-	parts := strings.Split(fileURL, "https://bbfs.io/files/view_file#z:")
+	parts := strings.Split(fileURL, client.BigCentralBaseURL()+"/files/view_file#z:")
 	if len(parts) != 2 {
 		return nil, "", fmt.Errorf("invalid url")
 	}

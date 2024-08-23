@@ -7,6 +7,7 @@ import (
 	"strings"
 	"syscall"
 
+	"github.com/BillysBigFileServer/bbfs-cli/client"
 	"github.com/BillysBigFileServer/bbfs-cli/config"
 	"github.com/BillysBigFileServer/bfsp-go"
 	"github.com/google/uuid"
@@ -29,8 +30,7 @@ func runLogin(cmd *cobra.Command, args []string) {
 	if err != nil {
 		panic(err)
 	}
-	bigCentralURL := "https://bbfs.io"
-	//bigCentralURL := "http://localhost:4000"
+	bigCentralURL := client.BigCentralBaseURL()
 	dlTokenUrl := bigCentralURL + "/auth?dl_token=" + dlToken.String()
 
 	fmt.Fprintln(os.Stderr, "Visit", dlTokenUrl, "to sign in...")
