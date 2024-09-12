@@ -1,5 +1,5 @@
-github.com/BillysBigFileServer/bfsp-go v0.0.0-20240818175626-f1496e217572 h1:ErH/5LWyqK3ccu0fKC2VVdlFT60Q8ZSWaZZ+keoeMkY=
-github.com/BillysBigFileServer/bfsp-go v0.0.0-20240818175626-f1496e217572/go.mod h1:sBO1I5Oy4hNF2GOL7l6ohukxnXFeSZWh4VLHgQhkvQQ=
+github.com/BillysBigFileServer/bfsp-go v0.0.0-20240912012608-a171b44d86f2 h1:NL3UZRM5yt+IC+y/+QR5d3HQuoVvuLePV7uLMA4H0Cg=
+github.com/BillysBigFileServer/bfsp-go v0.0.0-20240912012608-a171b44d86f2/go.mod h1:sBO1I5Oy4hNF2GOL7l6ohukxnXFeSZWh4VLHgQhkvQQ=
 github.com/adrg/xdg v0.5.0 h1:dDaZvhMXatArP1NPHhnfaQUqWBLBsmx1h1HXQdMoFCY=
 github.com/adrg/xdg v0.5.0/go.mod h1:dDdY4M4DF9Rjy4kHPeNL+ilVF+p2lK8IdM9/rTSGcI4=
 github.com/alecthomas/assert/v2 v2.2.2 h1:Z/iVC0xZfWTaFNE6bA3z07T86hd45Xe2eLt6WVy2bbk=
@@ -43,8 +43,6 @@ golang.org/x/sync v0.8.0/go.mod h1:Czt+wKu1gCyEFDUtn0jG5QVvpJ6rzVqr5aXyt9drQfk=
 golang.org/x/sys v0.5.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/sys v0.24.0 h1:Twjiwq9dn6R1fQcyiK+wQyHWfaz/BJB+YIpzU/Cv3Xg=
 golang.org/x/sys v0.24.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
-golang.org/x/term v0.23.0 h1:F6D4vR+EHoL9/sWAWgAR1H2DcHr4PareCbAaCo1RpuU=
-golang.org/x/term v0.23.0/go.mod h1:DgV24QBUrK6jhZXl+20l6UWznPlwAHm1Q1mGHtydmSk=
 google.golang.org/protobuf v1.34.2 h1:6xV6lTsCfpGD21XK49h7MhtcApnLqkfYgPcdHftf6hg=
 google.golang.org/protobuf v1.34.2/go.mod h1:qYOHts0dSfpeUzUFpOMr/WGzszTmLH+DiWniOlNbLDw=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
