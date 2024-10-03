@@ -33,7 +33,7 @@ func runUsage(cmd *cobra.Command, args []string) {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(humanSize(usage))
+	fmt.Println(humanSize(usage.TotalUsage), "/", humanSize(usage.StorageCap))
 
 }
 

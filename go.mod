@@ -3,7 +3,7 @@ module github.com/BillysBigFileServer/bbfs-cli
 go 1.22.5
 
 require (
-	github.com/BillysBigFileServer/bfsp-go v0.0.0-20241003021647-242217dcc27e
+	github.com/BillysBigFileServer/bfsp-go v0.0.0-20241003023348-9c81fd203642
 	github.com/google/uuid v1.6.0
 	github.com/spf13/cobra v1.8.1
 	golang.org/x/sync v0.8.0
