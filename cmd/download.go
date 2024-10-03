@@ -9,6 +9,7 @@ import (
 
 	"github.com/BillysBigFileServer/bbfs-cli/client"
 	"github.com/BillysBigFileServer/bfsp-go"
+	"github.com/BillysBigFileServer/bfsp-go/config"
 	"github.com/spf13/cobra"
 	"golang.org/x/sync/errgroup"
 )
@@ -137,7 +138,7 @@ func getFileMetadata(bfspClient bfsp.FileServerClient, file string, masterKey bf
 }
 
 func fileMetadataFromURL(bfspClient bfsp.FileServerClient, fileURL string, masterKey bfsp.MasterKey) (*bfsp.FileMetadata, string, error) {
-	parts := strings.Split(fileURL, client.BigCentralBaseURL()+"/files/view_file#z:")
+	parts := strings.Split(fileURL, config.BigCentralBaseURL()+"/files/view_file#z:")
 	if len(parts) != 2 {
 		return nil, "", fmt.Errorf("invalid url")
 	}

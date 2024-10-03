@@ -1,5 +1,5 @@
-github.com/BillysBigFileServer/bfsp-go v0.0.0-20240912012608-a171b44d86f2 h1:NL3UZRM5yt+IC+y/+QR5d3HQuoVvuLePV7uLMA4H0Cg=
-github.com/BillysBigFileServer/bfsp-go v0.0.0-20240912012608-a171b44d86f2/go.mod h1:sBO1I5Oy4hNF2GOL7l6ohukxnXFeSZWh4VLHgQhkvQQ=
+github.com/BillysBigFileServer/bfsp-go v0.0.0-20241003021647-242217dcc27e h1:SjUKdXfz6mtw6YZokAuZs5CC2LldrzGyH0QVfPA07CU=
+github.com/BillysBigFileServer/bfsp-go v0.0.0-20241003021647-242217dcc27e/go.mod h1:9bG1ni9aqMCdzQh5rkl0dgFUOAKyIRWeyyHqKHmIugs=
 github.com/adrg/xdg v0.5.0 h1:dDaZvhMXatArP1NPHhnfaQUqWBLBsmx1h1HXQdMoFCY=
 github.com/adrg/xdg v0.5.0/go.mod h1:dDdY4M4DF9Rjy4kHPeNL+ilVF+p2lK8IdM9/rTSGcI4=
 github.com/alecthomas/assert/v2 v2.2.2 h1:Z/iVC0xZfWTaFNE6bA3z07T86hd45Xe2eLt6WVy2bbk=

@@ -8,9 +8,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/BillysBigFileServer/bbfs-cli/client"
-	"github.com/BillysBigFileServer/bbfs-cli/config"
 	"github.com/BillysBigFileServer/bfsp-go"
+	"github.com/BillysBigFileServer/bfsp-go/config"
 	"github.com/google/uuid"
 	"github.com/spf13/cobra"
 )
@@ -30,7 +29,7 @@ func runLogin(cmd *cobra.Command, args []string) {
 	if err != nil {
 		panic(err)
 	}
-	bigCentralURL := client.BigCentralBaseURL()
+	bigCentralURL := config.BigCentralBaseURL()
 	privKey, err := rsa.GenerateKey(rand.Reader, 4096)
 	if err != nil {
 		panic(err)
